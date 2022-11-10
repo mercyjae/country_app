@@ -1,7 +1,7 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/country_details_screen.dart';
-import 'package:country_app/filter_tile.dart';
-import 'package:country_app/search_field.dart';
+import 'package:country_app/widget/filter_tile.dart';
+import 'package:country_app/widget/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
