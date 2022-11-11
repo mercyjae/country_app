@@ -1,14 +1,26 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/country_details_screen.dart';
+import 'package:country_app/model/country_model.dart';
+import 'package:country_app/service/country_service.dart';
 import 'package:country_app/widget/filter_tile.dart';
 import 'package:country_app/widget/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CountryScreen extends StatelessWidget {
+class CountryScreen extends StatefulWidget {
   const CountryScreen({Key? key}) : super(key: key);
 
+  @override
+  State<CountryScreen> createState() => _CountryScreenState();
+}
+
+class _CountryScreenState extends State<CountryScreen> {
+  @override
+  void initState() {
+    CountryService().getCountryList();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
@@ -43,7 +55,7 @@ class CountryScreen extends StatelessWidget {
                     containerWidth: 96.w,
                     color: AppColors.containerBgColor,
                     //TODO: To change the filter icon
-                    icon: Icons.filter,
+                    icon: Icons.filter_alt_outlined,
                     text: "Filter",
                   ),
                 ],
@@ -57,19 +69,35 @@ Text(
                   color: AppColors.searchIconColor,
                 ),
               ),
-               // ListView.separated(
-               //    itemBuilder: (context, index) {
-               //      final country = data[index];
-               //      return CountryBuildNameWidget(
-               //        countryName: country.name!.common!,
-               //        capital: country.capital![0],
-               //        //imgUrl: '',
-               //      );
-               //    },
-               //    separatorBuilder: (context, index) {
-               //      return SizedBox(height: 20.h);
-               //    },
-               //    itemCount: 20),
+               FutureBuilder<List<CountryModel>>(
+                 future: CountryService().getCountryList(),
+                   builder: (context,snapshot){
+                   final data = snapshot.data;
+                   if(snapshot.hasData){
+                     return   ListView.separated(
+                    itemCount: data!.length,
+                         itemBuilder: (context, index) {
+                           final country = data[index];
+                           return CountryBuildNameWidget(
+                             countryName: country.name!.common!,
+                             capital: country.capital![0],
+                             imgUrl: country.flag!,
+                             //imgUrl: '',
+                           );
+                         },
+                         separatorBuilder: (context, index) {
+                           return SizedBox(height: 20.h);
+                         },
+                         );
+                   }else if(snapshot.hasError){
+                  return   Text(snapshot.error.toString());
+                   }
+                   else{
+                     return CircularProgressIndicator();
+                   }
+
+               })
+             ,
             ],
           ),
         ),
@@ -77,7 +105,6 @@ Text(
     );
   }
 }
-
 class CountryBuildNameWidget extends StatelessWidget {
   final String countryName;
   final String capital;
@@ -102,21 +129,9 @@ class CountryBuildNameWidget extends StatelessWidget {
           SizedBox(
             width: 40.w,
             height: 40.h,
-            child: FittedBox(child: Image.network(imgUrl)
-              // CachedNetworkImage(
-              //   imageUrl: imgUrl,
-              //   progressIndicatorBuilder: (context, url, downloadProgress) =>
-              //       CircularProgressIndicator(value: downloadProgress.progress),
-              //   errorWidget: (context, url, error) => const Icon(Icons.error),
-              // ),
-              // Text(
-              //   'A',
-              //   style: GoogleFonts.poppins(
-              //     fontSize: 14.sp,
-              //     fontWeight: FontWeight.w600,
-              //     color: AppColors.searchIconColor,
-              //   ),
-              // ),
+            child:
+            FittedBox(child: Image.network(imgUrl)
+
             ),
           ),
           SizedBox(width: 16.w),
