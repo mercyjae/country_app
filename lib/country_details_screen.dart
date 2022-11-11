@@ -40,11 +40,11 @@ class CountryDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
              Container(
-            height: 50,
-            width: 50,
+            height: 150,
+            width: 350,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: NetworkImage(countryModel.flags!.png!))),
+                    image: NetworkImage(countryModel.flags!.png!,))),
           ),
          
             SizedBox(height: 24.5.h),
@@ -78,9 +78,9 @@ class CountryDetailsScreen extends StatelessWidget {
                     value: countryModel.languages.toString()
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                   CountryDetailsTextWidget(
                     text: 'Ethic group:',
-                    value: 'Andorran, Spanish, Portuguese',
+                    value: countryModel.subregion.toString(),
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsTextWidget(
@@ -93,9 +93,9 @@ class CountryDetailsScreen extends StatelessWidget {
                     value: 'democracry'
                   ),
                   SizedBox(height: 24.h),
-                  const CountryDetailsTextWidget(
+                   CountryDetailsTextWidget(
                     text: 'Independence:',
-                    value: '8th September, 1278',
+                    value: countryModel.independent.toString()
                   ),
                   SizedBox(height: 4.h),
                  CountryDetailsTextWidget(
@@ -105,12 +105,12 @@ class CountryDetailsScreen extends StatelessWidget {
                   SizedBox(height: 4.h),
                    CountryDetailsTextWidget(
                     text: 'Currency:',
-                    value: countryModel.currencies.toString()
+                    value: countryModel.currencies!.bBD.toString()
                   ),
                   SizedBox(height: 4.h),
-                   CountryDetailsTextWidget(
+                   const CountryDetailsTextWidget(
                     text: 'GDP:',
-                    value: 'Time zone:'
+                    value: 'US\$3.400 billion',
                   ),
                   SizedBox(height: 24.h),
                   CountryDetailsTextWidget(
@@ -123,14 +123,14 @@ class CountryDetailsScreen extends StatelessWidget {
                     value: 'dd/mm/yyyy',
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                  CountryDetailsTextWidget(
                     text: 'Dialling code:',
-                    value: '+376',
+                    value: countryModel.idd!.root.toString()
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                  CountryDetailsTextWidget(
                     text: 'Driving side:',
-                    value: 'right',
+                    value: countryModel.car!.side.toString()
                   ),
                   SizedBox(height: 24.h),
                   

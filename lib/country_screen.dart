@@ -2,8 +2,8 @@ import 'package:country_app/constant/color.dart';
 import 'package:country_app/country_details_screen.dart';
 import 'package:country_app/model/country_model.dart';
 import 'package:country_app/provider/country_provider.dart';
-import 'package:country_app/service/country_service.dart';
 import 'package:country_app/widget/filter_tile.dart';
+import 'package:country_app/widget/languge.dart';
 import 'package:country_app/widget/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,13 +49,13 @@ class _CountryScreenState extends State<CountryScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  FilterWidget(
+                  FilterWidget(onTap: (){showLanguaugeBottomsheet(context);},
                     containerWidth: 73.w,
                     color: AppColors.whiteColor,
                     icon: Icons.language,
                     text: "EN",
                   ),
-                  FilterWidget(
+                  FilterWidget(onTap: (){},
                     containerWidth: 96.w,
                     color: AppColors.containerBgColor,
                     //TODO: To change the filter icon
@@ -154,8 +154,8 @@ class CountryBuildNameWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 20,
-            width: 20,
+            height: 40,
+            width: 40,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(countryModel.flags!.png!))),

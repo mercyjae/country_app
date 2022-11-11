@@ -18,6 +18,13 @@ Future<void> fetchCountries()async{
   isLoading = false;
   notifyListeners();
 }
+  String lang = "";
+
+void changeLanguage(String lng) {
+ 
+    lang = lng;
+  
+}
 
 
 }

@@ -8,54 +8,57 @@ class FilterWidget extends StatelessWidget {
   final Color color;
   final String text;
   final IconData? icon;
+  final VoidCallback onTap;
   const FilterWidget({
     Key? key,
     required this.containerWidth,
     required this.color,
     required this.text,
-    required this.icon,
+    required this.icon, required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: EdgeInsets.all(6.w),
-          width: containerWidth,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(4.r),
-            border: Border.all(
-              width: 0.2.w,
-              color: AppColors.containerBorderColor,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.containerBoxShadowRgba,
-                blurRadius: 2.r,
-                spreadRadius: 0.0,
-                offset: const Offset(0, 1),
+    return InkWell(onTap: onTap,
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.all(6.w),
+            width: containerWidth,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(4.r),
+              border: Border.all(
+                width: 0.2.w,
+                color: AppColors.containerBorderColor,
               ),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, color: AppColors.primaryColor),
-              SizedBox(width: 10.w),
-              Text(
-                text,
-                style: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.blackColor,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.containerBoxShadowRgba,
+                  blurRadius: 2.r,
+                  spreadRadius: 0.0,
+                  offset: const Offset(0, 1),
                 ),
-              ),
-            ],
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, color: AppColors.primaryColor),
+                SizedBox(width: 10.w),
+                Text(
+                  text,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.blackColor,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
