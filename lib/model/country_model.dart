@@ -1,6 +1,8 @@
+
+
 class CountryModel {
   Name? name;
-  List<String>? tld;
+  List<dynamic>? tld;
   String? cca2;
   String? ccn3;
   String? cca3;
@@ -10,21 +12,19 @@ class CountryModel {
   bool? unMember;
   Currencies? currencies;
   Idd? idd;
-  List<String>? capital;
+  List<dynamic>? capital;
   List<String>? altSpellings;
   String? region;
   String? subregion;
   Languages? languages;
   Translations? translations;
-  List<int>? latlng;
+  List<double>? latlng;
   bool? landlocked;
-  List<String>? borders;
-  int? area;
+  double? area;
   Demonyms? demonyms;
   String? flag;
   Maps? maps;
   int? population;
-  Gini? gini;
   String? fifa;
   Car? car;
   List<String>? timezones;
@@ -33,46 +33,46 @@ class CountryModel {
   Flags? coatOfArms;
   String? startOfWeek;
   CapitalInfo? capitalInfo;
+  PostalCode? postalCode;
 
   CountryModel(
       {this.name,
-        this.tld,
-        this.cca2,
-        this.ccn3,
-        this.cca3,
-        this.cioc,
-        this.independent,
-        this.status,
-        this.unMember,
-        this.currencies,
-        this.idd,
-        this.capital,
-        this.altSpellings,
-        this.region,
-        this.subregion,
-        this.languages,
-        this.translations,
-        this.latlng,
-        this.landlocked,
-        this.borders,
-        this.area,
-        this.demonyms,
-        this.flag,
-        this.maps,
-        this.population,
-        this.gini,
-        this.fifa,
-        this.car,
-        this.timezones,
-        this.continents,
-        this.flags,
-        this.coatOfArms,
-        this.startOfWeek,
-        this.capitalInfo});
+      this.tld,
+      this.cca2,
+      this.ccn3,
+      this.cca3,
+      this.cioc,
+      this.independent,
+      this.status,
+      this.unMember,
+      this.currencies,
+      this.idd,
+      this.capital,
+      this.altSpellings,
+      this.region,
+      this.subregion,
+      this.languages,
+      this.translations,
+      this.latlng,
+      this.landlocked,
+      this.area,
+      this.demonyms,
+      this.flag,
+      this.maps,
+      this.population,
+      this.fifa,
+      this.car,
+      this.timezones,
+      this.continents,
+      this.flags,
+      this.coatOfArms,
+      this.startOfWeek,
+      this.capitalInfo,
+      this.postalCode});
 
   CountryModel.fromJson(Map<String, dynamic> json) {
-    name = json['name'] != null ? new Name.fromJson(json['name']) : null;
-    tld = json['tld'].cast<String>();
+    name = json['name'] != null ? Name.fromJson(json['name']) : null;
+    tld = json['tld'];
     cca2 = json['cca2'];
     ccn3 = json['ccn3'];
     cca3 = json['cca3'];
@@ -81,103 +81,101 @@ class CountryModel {
     status = json['status'];
     unMember = json['unMember'];
     currencies = json['currencies'] != null
-        ? new Currencies.fromJson(json['currencies'])
+        ? Currencies.fromJson(json['currencies'])
         : null;
-    idd = json['idd'] != null ? new Idd.fromJson(json['idd']) : null;
-    capital = json['capital'].cast<String>();
+    idd = json['idd'] != null ? Idd.fromJson(json['idd']) : null;
+    capital = json['capital'];
     altSpellings = json['altSpellings'].cast<String>();
     region = json['region'];
     subregion = json['subregion'];
     languages = json['languages'] != null
-        ? new Languages.fromJson(json['languages'])
+        ? Languages.fromJson(json['languages'])
         : null;
     translations = json['translations'] != null
-        ? new Translations.fromJson(json['translations'])
+        ? Translations.fromJson(json['translations'])
         : null;
-    latlng = json['latlng'].cast<int>();
+    latlng = json['latlng'].cast<double>();
     landlocked = json['landlocked'];
-    borders = json['borders'].cast<String>();
     area = json['area'];
-    demonyms = json['demonyms'] != null
-        ? new Demonyms.fromJson(json['demonyms'])
-        : null;
+    demonyms =
+        json['demonyms'] != null ? Demonyms.fromJson(json['demonyms']) : null;
     flag = json['flag'];
-    maps = json['maps'] != null ? new Maps.fromJson(json['maps']) : null;
+    maps = json['maps'] != null ? Maps.fromJson(json['maps']) : null;
     population = json['population'];
-    gini = json['gini'] != null ? new Gini.fromJson(json['gini']) : null;
     fifa = json['fifa'];
-    car = json['car'] != null ? new Car.fromJson(json['car']) : null;
+    car = json['car'] != null ? Car.fromJson(json['car']) : null;
     timezones = json['timezones'].cast<String>();
     continents = json['continents'].cast<String>();
-    flags = json['flags'] != null ? new Flags.fromJson(json['flags']) : null;
-    coatOfArms = json['coatOfArms'] != null
-        ? new Flags.fromJson(json['coatOfArms'])
-        : null;
+    flags = json['flags'] != null ? Flags.fromJson(json['flags']) : null;
+    coatOfArms =
+        json['coatOfArms'] != null ? Flags.fromJson(json['coatOfArms']) : null;
     startOfWeek = json['startOfWeek'];
     capitalInfo = json['capitalInfo'] != null
-        ? new CapitalInfo.fromJson(json['capitalInfo'])
+        ? CapitalInfo.fromJson(json['capitalInfo'])
+        : null;
+    postalCode = json['postalCode'] != null
+        ? PostalCode.fromJson(json['postalCode'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.name != null) {
-      data['name'] = this.name!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (name != null) {
+      data['name'] = name!.toJson();
     }
-    data['tld'] = this.tld;
-    data['cca2'] = this.cca2;
-    data['ccn3'] = this.ccn3;
-    data['cca3'] = this.cca3;
-    data['cioc'] = this.cioc;
-    data['independent'] = this.independent;
-    data['status'] = this.status;
-    data['unMember'] = this.unMember;
-    if (this.currencies != null) {
-      data['currencies'] = this.currencies!.toJson();
+    data['tld'] = tld;
+    data['cca2'] = cca2;
+    data['ccn3'] = ccn3;
+    data['cca3'] = cca3;
+    data['cioc'] = cioc;
+    data['independent'] = independent;
+    data['status'] = status;
+    data['unMember'] = unMember;
+    if (currencies != null) {
+      data['currencies'] = currencies!.toJson();
     }
-    if (this.idd != null) {
-      data['idd'] = this.idd!.toJson();
+    if (idd != null) {
+      data['idd'] = idd!.toJson();
     }
-    data['capital'] = this.capital;
-    data['altSpellings'] = this.altSpellings;
-    data['region'] = this.region;
-    data['subregion'] = this.subregion;
-    if (this.languages != null) {
-      data['languages'] = this.languages!.toJson();
+    data['capital'] = capital;
+    data['altSpellings'] = altSpellings;
+    data['region'] = region;
+    data['subregion'] = subregion;
+    if (languages != null) {
+      data['languages'] = languages!.toJson();
     }
-    if (this.translations != null) {
-      data['translations'] = this.translations!.toJson();
+    if (translations != null) {
+      data['translations'] = translations!.toJson();
     }
-    data['latlng'] = this.latlng;
-    data['landlocked'] = this.landlocked;
-    data['borders'] = this.borders;
-    data['area'] = this.area;
-    if (this.demonyms != null) {
-      data['demonyms'] = this.demonyms!.toJson();
+    data['latlng'] = latlng;
+    data['landlocked'] = landlocked;
+    data['area'] = area;
+    if (demonyms != null) {
+      data['demonyms'] = demonyms!.toJson();
     }
-    data['flag'] = this.flag;
-    if (this.maps != null) {
-      data['maps'] = this.maps!.toJson();
+    data['flag'] = flag;
+    if (maps != null) {
+      data['maps'] = maps!.toJson();
     }
-    data['population'] = this.population;
-    if (this.gini != null) {
-      data['gini'] = this.gini!.toJson();
+    data['population'] = population;
+    data['fifa'] = fifa;
+    if (car != null) {
+      data['car'] = car!.toJson();
     }
-    data['fifa'] = this.fifa;
-    if (this.car != null) {
-      data['car'] = this.car!.toJson();
+    data['timezones'] = timezones;
+    data['continents'] = continents;
+    if (flags != null) {
+      data['flags'] = flags!.toJson();
     }
-    data['timezones'] = this.timezones;
-    data['continents'] = this.continents;
-    if (this.flags != null) {
-      data['flags'] = this.flags!.toJson();
+    if (coatOfArms != null) {
+      data['coatOfArms'] = coatOfArms!.toJson();
     }
-    if (this.coatOfArms != null) {
-      data['coatOfArms'] = this.coatOfArms!.toJson();
+    data['startOfWeek'] = startOfWeek;
+    if (capitalInfo != null) {
+      data['capitalInfo'] = capitalInfo!.toJson();
     }
-    data['startOfWeek'] = this.startOfWeek;
-    if (this.capitalInfo != null) {
-      data['capitalInfo'] = this.capitalInfo!.toJson();
+    if (postalCode != null) {
+      data['postalCode'] = postalCode!.toJson();
     }
     return data;
   }
@@ -194,282 +192,282 @@ class Name {
     common = json['common'];
     official = json['official'];
     nativeName = json['nativeName'] != null
-        ? new NativeName.fromJson(json['nativeName'])
+        ? NativeName.fromJson(json['nativeName'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['common'] = this.common;
-    data['official'] = this.official;
-    if (this.nativeName != null) {
-      data['nativeName'] = this.nativeName!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['common'] = common;
+    data['official'] = official;
+    if (nativeName != null) {
+      data['nativeName'] = nativeName!.toJson();
     }
     return data;
   }
 }
 
 class NativeName {
-  Ara? ara;
+  Eng? eng;
 
-  NativeName({this.ara});
+  NativeName({this.eng});
 
   NativeName.fromJson(Map<String, dynamic> json) {
-    ara = json['ara'] != null ? new Ara.fromJson(json['ara']) : null;
+    eng = json['eng'] != null ? Eng.fromJson(json['eng']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.ara != null) {
-      data['ara'] = this.ara!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (eng != null) {
+      data['eng'] = eng!.toJson();
     }
     return data;
   }
 }
 
-class Ara {
+class Eng {
   String? official;
   String? common;
 
-  Ara({this.official, this.common});
+  Eng({this.official, this.common});
 
-  Ara.fromJson(Map<String, dynamic> json) {
+  Eng.fromJson(Map<String, dynamic> json) {
     official = json['official'];
     common = json['common'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['official'] = this.official;
-    data['common'] = this.common;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['official'] = official;
+    data['common'] = common;
     return data;
   }
 }
 
 class Currencies {
-  MRU? mRU;
+  BBD? bBD;
 
-  Currencies({this.mRU});
+  Currencies({this.bBD});
 
   Currencies.fromJson(Map<String, dynamic> json) {
-    mRU = json['MRU'] != null ? new MRU.fromJson(json['MRU']) : null;
+    bBD = json['BBD'] != null ? BBD.fromJson(json['BBD']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.mRU != null) {
-      data['MRU'] = this.mRU!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (bBD != null) {
+      data['BBD'] = bBD!.toJson();
     }
     return data;
   }
 }
 
-class MRU {
+class BBD {
   String? name;
   String? symbol;
 
-  MRU({this.name, this.symbol});
+  BBD({this.name, this.symbol});
 
-  MRU.fromJson(Map<String, dynamic> json) {
+  BBD.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     symbol = json['symbol'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['symbol'] = this.symbol;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['symbol'] = symbol;
     return data;
   }
 }
 
 class Idd {
   String? root;
-  List<String>? suffixes;
+  List<dynamic>? suffixes;
 
   Idd({this.root, this.suffixes});
 
   Idd.fromJson(Map<String, dynamic> json) {
     root = json['root'];
-    suffixes = json['suffixes'].cast<String>();
+    suffixes = json['suffixes'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['root'] = this.root;
-    data['suffixes'] = this.suffixes;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['root'] = root;
+    data['suffixes'] = suffixes;
     return data;
   }
 }
 
 class Languages {
-  String? ara;
+  String? eng;
 
-  Languages({this.ara});
+  Languages({this.eng});
 
   Languages.fromJson(Map<String, dynamic> json) {
-    ara = json['ara'];
+    eng = json['eng'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ara'] = this.ara;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['eng'] = eng;
     return data;
   }
 }
 
 class Translations {
-  Ara? ara;
-  Ara? bre;
-  Ara? ces;
-  Ara? cym;
-  Ara? deu;
-  Ara? est;
-  Ara? fin;
+  Eng? ara;
+  Eng? bre;
+  Eng? ces;
+  Eng? cym;
+  Eng? deu;
+  Eng? est;
+  Eng? fin;
   Eng? fra;
-  Ara? hrv;
-  Ara? hun;
-  Ara? ita;
-  Ara? jpn;
-  Ara? kor;
-  Ara? nld;
-  Ara? per;
-  Ara? pol;
-  Ara? por;
-  Ara? rus;
-  Ara? slk;
-  Ara? spa;
-  Ara? swe;
-  Ara? tur;
-  Ara? urd;
-  Ara? zho;
+  Eng? hrv;
+  Eng? hun;
+  Eng? ita;
+  Eng? jpn;
+  Eng? kor;
+  Eng? nld;
+  Eng? per;
+  Eng? pol;
+  Eng? por;
+  Eng? rus;
+  Eng? slk;
+  Eng? spa;
+  Eng? swe;
+  Eng? tur;
+  Eng? urd;
+  Eng? zho;
 
   Translations(
       {this.ara,
-        this.bre,
-        this.ces,
-        this.cym,
-        this.deu,
-        this.est,
-        this.fin,
-        this.fra,
-        this.hrv,
-        this.hun,
-        this.ita,
-        this.jpn,
-        this.kor,
-        this.nld,
-        this.per,
-        this.pol,
-        this.por,
-        this.rus,
-        this.slk,
-        this.spa,
-        this.swe,
-        this.tur,
-        this.urd,
-        this.zho});
+      this.bre,
+      this.ces,
+      this.cym,
+      this.deu,
+      this.est,
+      this.fin,
+      this.fra,
+      this.hrv,
+      this.hun,
+      this.ita,
+      this.jpn,
+      this.kor,
+      this.nld,
+      this.per,
+      this.pol,
+      this.por,
+      this.rus,
+      this.slk,
+      this.spa,
+      this.swe,
+      this.tur,
+      this.urd,
+      this.zho});
 
   Translations.fromJson(Map<String, dynamic> json) {
-    ara = json['ara'] != null ? new Ara.fromJson(json['ara']) : null;
-    bre = json['bre'] != null ? new Ara.fromJson(json['bre']) : null;
-    ces = json['ces'] != null ? new Ara.fromJson(json['ces']) : null;
-    cym = json['cym'] != null ? new Ara.fromJson(json['cym']) : null;
-    deu = json['deu'] != null ? new Ara.fromJson(json['deu']) : null;
-    est = json['est'] != null ? new Ara.fromJson(json['est']) : null;
-    fin = json['fin'] != null ? new Ara.fromJson(json['fin']) : null;
-    fra = json['fra'] != null ? new Eng.fromJson(json['fra']) : null;
-    hrv = json['hrv'] != null ? new Ara.fromJson(json['hrv']) : null;
-    hun = json['hun'] != null ? new Ara.fromJson(json['hun']) : null;
-    ita = json['ita'] != null ? new Ara.fromJson(json['ita']) : null;
-    jpn = json['jpn'] != null ? new Ara.fromJson(json['jpn']) : null;
-    kor = json['kor'] != null ? new Ara.fromJson(json['kor']) : null;
-    nld = json['nld'] != null ? new Ara.fromJson(json['nld']) : null;
-    per = json['per'] != null ? new Ara.fromJson(json['per']) : null;
-    pol = json['pol'] != null ? new Ara.fromJson(json['pol']) : null;
-    por = json['por'] != null ? new Ara.fromJson(json['por']) : null;
-    rus = json['rus'] != null ? new Ara.fromJson(json['rus']) : null;
-    slk = json['slk'] != null ? new Ara.fromJson(json['slk']) : null;
-    spa = json['spa'] != null ? new Ara.fromJson(json['spa']) : null;
-    swe = json['swe'] != null ? new Ara.fromJson(json['swe']) : null;
-    tur = json['tur'] != null ? new Ara.fromJson(json['tur']) : null;
-    urd = json['urd'] != null ? new Ara.fromJson(json['urd']) : null;
-    zho = json['zho'] != null ? new Ara.fromJson(json['zho']) : null;
+    ara = json['ara'] != null ? Eng.fromJson(json['ara']) : null;
+    bre = json['bre'] != null ? Eng.fromJson(json['bre']) : null;
+    ces = json['ces'] != null ? Eng.fromJson(json['ces']) : null;
+    cym = json['cym'] != null ? Eng.fromJson(json['cym']) : null;
+    deu = json['deu'] != null ? Eng.fromJson(json['deu']) : null;
+    est = json['est'] != null ? Eng.fromJson(json['est']) : null;
+    fin = json['fin'] != null ? Eng.fromJson(json['fin']) : null;
+    fra = json['fra'] != null ? Eng.fromJson(json['fra']) : null;
+    hrv = json['hrv'] != null ? Eng.fromJson(json['hrv']) : null;
+    hun = json['hun'] != null ? Eng.fromJson(json['hun']) : null;
+    ita = json['ita'] != null ? Eng.fromJson(json['ita']) : null;
+    jpn = json['jpn'] != null ? Eng.fromJson(json['jpn']) : null;
+    kor = json['kor'] != null ? Eng.fromJson(json['kor']) : null;
+    nld = json['nld'] != null ? Eng.fromJson(json['nld']) : null;
+    per = json['per'] != null ? Eng.fromJson(json['per']) : null;
+    pol = json['pol'] != null ? Eng.fromJson(json['pol']) : null;
+    por = json['por'] != null ? Eng.fromJson(json['por']) : null;
+    rus = json['rus'] != null ? Eng.fromJson(json['rus']) : null;
+    slk = json['slk'] != null ? Eng.fromJson(json['slk']) : null;
+    spa = json['spa'] != null ? Eng.fromJson(json['spa']) : null;
+    swe = json['swe'] != null ? Eng.fromJson(json['swe']) : null;
+    tur = json['tur'] != null ? Eng.fromJson(json['tur']) : null;
+    urd = json['urd'] != null ? Eng.fromJson(json['urd']) : null;
+    zho = json['zho'] != null ? Eng.fromJson(json['zho']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.ara != null) {
-      data['ara'] = this.ara!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (ara != null) {
+      data['ara'] = ara!.toJson();
     }
-    if (this.bre != null) {
-      data['bre'] = this.bre!.toJson();
+    if (bre != null) {
+      data['bre'] = bre!.toJson();
     }
-    if (this.ces != null) {
-      data['ces'] = this.ces!.toJson();
+    if (ces != null) {
+      data['ces'] = ces!.toJson();
     }
-    if (this.cym != null) {
-      data['cym'] = this.cym!.toJson();
+    if (cym != null) {
+      data['cym'] = cym!.toJson();
     }
-    if (this.deu != null) {
-      data['deu'] = this.deu!.toJson();
+    if (deu != null) {
+      data['deu'] = deu!.toJson();
     }
-    if (this.est != null) {
-      data['est'] = this.est!.toJson();
+    if (est != null) {
+      data['est'] = est!.toJson();
     }
-    if (this.fin != null) {
-      data['fin'] = this.fin!.toJson();
+    if (fin != null) {
+      data['fin'] = fin!.toJson();
     }
-    if (this.fra != null) {
-      data['fra'] = this.fra!.toJson();
+    if (fra != null) {
+      data['fra'] = fra!.toJson();
     }
-    if (this.hrv != null) {
-      data['hrv'] = this.hrv!.toJson();
+    if (hrv != null) {
+      data['hrv'] = hrv!.toJson();
     }
-    if (this.hun != null) {
-      data['hun'] = this.hun!.toJson();
+    if (hun != null) {
+      data['hun'] = hun!.toJson();
     }
-    if (this.ita != null) {
-      data['ita'] = this.ita!.toJson();
+    if (ita != null) {
+      data['ita'] = ita!.toJson();
     }
-    if (this.jpn != null) {
-      data['jpn'] = this.jpn!.toJson();
+    if (jpn != null) {
+      data['jpn'] = jpn!.toJson();
     }
-    if (this.kor != null) {
-      data['kor'] = this.kor!.toJson();
+    if (kor != null) {
+      data['kor'] = kor!.toJson();
     }
-    if (this.nld != null) {
-      data['nld'] = this.nld!.toJson();
+    if (nld != null) {
+      data['nld'] = nld!.toJson();
     }
-    if (this.per != null) {
-      data['per'] = this.per!.toJson();
+    if (per != null) {
+      data['per'] = per!.toJson();
     }
-    if (this.pol != null) {
-      data['pol'] = this.pol!.toJson();
+    if (pol != null) {
+      data['pol'] = pol!.toJson();
     }
-    if (this.por != null) {
-      data['por'] = this.por!.toJson();
+    if (por != null) {
+      data['por'] = por!.toJson();
     }
-    if (this.rus != null) {
-      data['rus'] = this.rus!.toJson();
+    if (rus != null) {
+      data['rus'] = rus!.toJson();
     }
-    if (this.slk != null) {
-      data['slk'] = this.slk!.toJson();
+    if (slk != null) {
+      data['slk'] = slk!.toJson();
     }
-    if (this.spa != null) {
-      data['spa'] = this.spa!.toJson();
+    if (spa != null) {
+      data['spa'] = spa!.toJson();
     }
-    if (this.swe != null) {
-      data['swe'] = this.swe!.toJson();
+    if (swe != null) {
+      data['swe'] = swe!.toJson();
     }
-    if (this.tur != null) {
-      data['tur'] = this.tur!.toJson();
+    if (tur != null) {
+      data['tur'] = tur!.toJson();
     }
-    if (this.urd != null) {
-      data['urd'] = this.urd!.toJson();
+    if (urd != null) {
+      data['urd'] = urd!.toJson();
     }
-    if (this.zho != null) {
-      data['zho'] = this.zho!.toJson();
+    if (zho != null) {
+      data['zho'] = zho!.toJson();
     }
     return data;
   }
@@ -482,37 +480,18 @@ class Demonyms {
   Demonyms({this.eng, this.fra});
 
   Demonyms.fromJson(Map<String, dynamic> json) {
-    eng = json['eng'] != null ? new Eng.fromJson(json['eng']) : null;
-    fra = json['fra'] != null ? new Eng.fromJson(json['fra']) : null;
+    eng = json['eng'] != null ? Eng.fromJson(json['eng']) : null;
+    fra = json['fra'] != null ? Eng.fromJson(json['fra']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.eng != null) {
-      data['eng'] = this.eng!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (eng != null) {
+      data['eng'] = eng!.toJson();
     }
-    if (this.fra != null) {
-      data['fra'] = this.fra!.toJson();
+    if (fra != null) {
+      data['fra'] = fra!.toJson();
     }
-    return data;
-  }
-}
-
-class Eng {
-  String? f;
-  String? m;
-
-  Eng({this.f, this.m});
-
-  Eng.fromJson(Map<String, dynamic> json) {
-    f = json['f'];
-    m = json['m'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['f'] = this.f;
-    data['m'] = this.m;
     return data;
   }
 }
@@ -529,44 +508,28 @@ class Maps {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['googleMaps'] = this.googleMaps;
-    data['openStreetMaps'] = this.openStreetMaps;
-    return data;
-  }
-}
-
-class Gini {
-  double? d2014;
-
-  Gini({this.d2014});
-
-  Gini.fromJson(Map<String, dynamic> json) {
-    d2014 = json['2014'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['2014'] = this.d2014;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['googleMaps'] = googleMaps;
+    data['openStreetMaps'] = openStreetMaps;
     return data;
   }
 }
 
 class Car {
-  List<String>? signs;
+  List<dynamic>? signs;
   String? side;
 
   Car({this.signs, this.side});
 
   Car.fromJson(Map<String, dynamic> json) {
-    signs = json['signs'].cast<String>();
+    signs = json['signs'];
     side = json['side'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['signs'] = this.signs;
-    data['side'] = this.side;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['signs'] = signs;
+    data['side'] = side;
     return data;
   }
 }
@@ -583,25 +546,44 @@ class Flags {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['png'] = this.png;
-    data['svg'] = this.svg;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['png'] = png;
+    data['svg'] = svg;
     return data;
   }
 }
 
 class CapitalInfo {
-  List<double>? latlng;
+  List<dynamic>? latlng;
 
   CapitalInfo({this.latlng});
 
   CapitalInfo.fromJson(Map<String, dynamic> json) {
-    latlng = json['latlng'].cast<double>();
+    latlng = json['latlng'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['latlng'] = this.latlng;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['latlng'] = latlng;
+    return data;
+  }
+}
+
+class PostalCode {
+  String? format;
+  String? regex;
+
+  PostalCode({this.format, this.regex});
+
+  PostalCode.fromJson(Map<String, dynamic> json) {
+    format = json['format'];
+    regex = json['regex'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['format'] = format;
+    data['regex'] = regex;
     return data;
   }
 }

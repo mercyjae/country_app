@@ -1,11 +1,13 @@
 import 'package:country_app/constant/color.dart';
+import 'package:country_app/model/country_model.dart';
 import 'package:country_app/widget/country_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CountryDetailsScreen extends StatelessWidget {
-  const CountryDetailsScreen({Key? key}) : super(key: key);
+  final CountryModel countryModel;
+  const CountryDetailsScreen({Key? key, required this.countryModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CountryDetailsScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Afghanistan',
+          countryModel.name!.common.toString(),
           style: GoogleFonts.poppins(
             fontSize: 20.sp,
             fontWeight: FontWeight.w700,
@@ -37,39 +39,33 @@ class CountryDetailsScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 24.w, right: 24.w),
         child: Column(
           children: [
-            SizedBox(
-              width: 380.w,
-              height: 200.h,
-              child: FittedBox(
-                child: Text(
-                  'A',
-                  style: GoogleFonts.poppins(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.searchIconColor,
-                  ),
-                ),
-              ),
-            ),
+             Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(countryModel.flags!.png!))),
+          ),
+         
             SizedBox(height: 24.5.h),
             Expanded(
               child: ListView(
                 padding: EdgeInsets.only(bottom: 30.h),
                 shrinkWrap: true,
                 children: [
-                  const CountryDetailsTextWidget(
+                 CountryDetailsTextWidget(
                     text: 'Population:',
-                    value: '77,354',
+                    value: countryModel.population.toString()
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                   CountryDetailsTextWidget(
                     text: 'Region:',
-                    value: 'Europe',
+                    value: countryModel.region!,
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                 CountryDetailsTextWidget(
                     text: 'Capital:',
-                    value: 'Andora la Vella',
+                    value: countryModel.capital!.toString()
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsTextWidget(
@@ -77,9 +73,9 @@ class CountryDetailsScreen extends StatelessWidget {
                     value: 'Virtus unita fortior',
                   ),
                   SizedBox(height: 24.h),
-                  const CountryDetailsTextWidget(
+                  CountryDetailsTextWidget(
                     text: 'Official language:',
-                    value: 'Catalan',
+                    value: countryModel.languages.toString()
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsTextWidget(
@@ -94,7 +90,7 @@ class CountryDetailsScreen extends StatelessWidget {
                   SizedBox(height: 4.h),
                   const CountryDetailsTextWidget(
                     text: 'Government:',
-                    value: 'Parliamentary democracy',
+                    value: 'democracry'
                   ),
                   SizedBox(height: 24.h),
                   const CountryDetailsTextWidget(
@@ -102,24 +98,24 @@ class CountryDetailsScreen extends StatelessWidget {
                     value: '8th September, 1278',
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                 CountryDetailsTextWidget(
                     text: 'Area:',
-                    value: '467.63 km2',
+                    value: countryModel.area.toString(),
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                   CountryDetailsTextWidget(
                     text: 'Currency:',
-                    value: 'Euro',
+                    value: countryModel.currencies.toString()
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                   CountryDetailsTextWidget(
                     text: 'GDP:',
-                    value: 'US\$3.400 billion',
+                    value: 'Time zone:'
                   ),
                   SizedBox(height: 24.h),
-                  const CountryDetailsTextWidget(
+                  CountryDetailsTextWidget(
                     text: 'Time zone:',
-                    value: 'UTC+01',
+                    value: countryModel.timezones.toString()
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsTextWidget(
@@ -137,25 +133,7 @@ class CountryDetailsScreen extends StatelessWidget {
                     value: 'right',
                   ),
                   SizedBox(height: 24.h),
-                  const CountryDetailsTextWidget(
-                    text: 'Population:',
-                    value: '77,354',
-                  ),
-                  SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
-                    text: 'Region:',
-                    value: 'Europe',
-                  ),
-                  SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
-                    text: 'Capital:',
-                    value: 'Andora la Vella',
-                  ),
-                  SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
-                    text: 'Motto:',
-                    value: 'Virtus unita fortior',
-                  ),
+                  
                 ],
               ),
             )

@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({Key? key}) : super(key: key);
-
+   SearchField({Key? key}) : super(key: key);
+ final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60.h,
-      child: TextFormField(
+      child: TextFormField(controller: searchController,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           prefixIcon: const Icon(
