@@ -28,28 +28,25 @@ class _SearchFieldState extends State<SearchField> {
       }),
         textAlign: TextAlign.center,
         decoration: InputDecoration(
+          border: InputBorder.none,
           prefixIcon: const Icon(
             Icons.search,
             color: AppColors.searchIconColor,
           ),
           filled: true,
-          fillColor: AppColors.textFormFieldBgColor,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.r),
-          ),
+          fillColor: Theme.of(context).colorScheme.primary,
+         
           hintText: 'Search Country',
-          hintStyle: GoogleFonts.poppins(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.textFormFieldBgColor),
-            borderRadius: BorderRadius.circular(4.r),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.textFormFieldBgColor),
-            borderRadius: BorderRadius.circular(4.r),
-          ),
+          hintStyle: Theme.of(context).textTheme.bodyText1,
+         
+          // enabledBorder: OutlineInputBorder(
+          //   borderSide: const BorderSide(color: AppColors.textFormFieldBgColor),
+          //   borderRadius: BorderRadius.circular(4.r),
+          // ),
+          // focusedBorder: OutlineInputBorder(
+          //   borderSide: const BorderSide(color: AppColors.textFormFieldBgColor),
+          //   borderRadius: BorderRadius.circular(4.r),
+          // ),
         ),
       ),
     );

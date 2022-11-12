@@ -1,5 +1,6 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/controller/country_provider.dart';
+import 'package:country_app/controller/theme_provider.dart';
 import 'package:country_app/widget/country_tile.dart';
 import 'package:country_app/widget/country_widget.dart';
 import 'package:country_app/widget/filter_bottom_sheet.dart';
@@ -8,6 +9,7 @@ import 'package:country_app/widget/search_field.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +28,6 @@ class _CountryScreenState extends State<CountryScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.whiteColor,
         body: Padding(
           padding: EdgeInsets.only(left: 24.w, right: 24.w),
           child: Column(
@@ -36,12 +37,24 @@ class _CountryScreenState extends State<CountryScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(
-                    'assets/logo.png',
-                    width: 100,
-                    height: 50,
+                  Text("Explore",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 20),),
+                  Consumer<ThemeProvider>(
+                    builder: (context,theme,child) {
+                      return 
+                      InkWell(onTap: (){theme.changeTheme();},
+                        child:theme.isLightTheme
+                         ? SvgPicture.asset(
+                              'assets/sun.svg',
+                              color: Colors.black,
+                            )
+                          : SvgPicture.asset(
+                              'assets/moon.svg',
+                              
+                            )
+                     
+                      );
+                    }
                   ),
-                  Icon(Icons.wb_sunny_outlined),
                 ],
               ),
               SizedBox(height: 24.h),
@@ -83,7 +96,7 @@ class _CountryScreenState extends State<CountryScreen> {
                 child: ListView.separated(
                   itemCount: countryProvider.foundList.length,
                   itemBuilder: (context, index) {
-                    return CountryBuildNameWidget(
+                    return CountryWidget(
                       countryModel: countryProvider.foundList[index],
                     );
                   },

@@ -26,11 +26,11 @@ class CountryTile extends StatelessWidget {
             padding: EdgeInsets.all(6.w),
             width: containerWidth,
             decoration: BoxDecoration(
-              color: color,
+              color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(4.r),
               border: Border.all(
-                width: 0.2.w,
-                color: AppColors.containerBorderColor,
+                width: 1.0.w,
+                color: Theme.of(context).colorScheme.secondary
               ),
               boxShadow: [
                 BoxShadow(
@@ -44,15 +44,11 @@ class CountryTile extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(icon, color: AppColors.primaryColor),
+                Icon(icon, color: Theme.of(context).iconTheme.color),
                 SizedBox(width: 10.w),
                 Text(
                   text,
-                  style: GoogleFonts.poppins(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.blackColor,
-                  ),
+                  style: Theme.of(context).textTheme.bodyText2
                 ),
               ],
             ),

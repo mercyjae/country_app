@@ -13,14 +13,14 @@ class LanguageTile extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+          style: Theme.of(context).textTheme.bodyText1
         ),
         Radio(
             value: title,
-            activeColor: Colors.pink,
+            activeColor: Colors.black,
             groupValue: selected,
             onChanged: (String? value) {
-              onSelect(value!.toString());
+              onSelect(value!.toString());  
             })
       ],
     );

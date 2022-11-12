@@ -5,16 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CountryBuildNameWidget extends StatelessWidget {
+class CountryWidget extends StatelessWidget {
   final CountryModel countryModel;
 
-  const CountryBuildNameWidget({
+  const CountryWidget({
     Key? key,
     required this.countryModel,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themedata = Theme.of(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: ((context) {
@@ -38,20 +39,12 @@ class CountryBuildNameWidget extends StatelessWidget {
             children: [
               Text(
                 countryModel.name!.common!,
-                style: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.primaryColor,
-                ),
+                style: themedata.textTheme.bodyText1
               ),
               SizedBox(height: 2.h),
               Text(
                 countryModel.capital![0],
-                style: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.searchIconColor,
-                ),
+                style: themedata.textTheme.bodyText2
               ),
             ],
           ),

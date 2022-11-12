@@ -40,6 +40,8 @@ dependencies:
   google_fonts: ^3.0.1
   http: ^0.13.5
   provider: ^6.0.4
+  flutter_svg: ^1.1.5
+  carousel_slider: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -65,7 +67,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/logo.png
+   - assets/sun.svg
+   - assets/moon.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

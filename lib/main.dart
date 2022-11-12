@@ -1,3 +1,5 @@
+import 'package:country_app/constant/color.dart';
+import 'package:country_app/controller/theme_provider.dart';
 import 'package:country_app/view/screen/country_screen.dart';
 import 'package:country_app/controller/country_provider.dart';
 
@@ -21,9 +23,18 @@ class MyApp extends StatelessWidget {
             providers: [
               ChangeNotifierProvider<CountryProvider>(
                   create: (context) => CountryProvider()),
+                  ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider())
             ],
-            child: const MaterialApp(
-                debugShowCheckedModeBanner: false, home: CountryScreen()),
+            child: Consumer<ThemeProvider>(
+              builder: (context, theme, child) {
+                return MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    theme: MyTheme.lightTheme,
+                    darkTheme: MyTheme.darkTheme,
+                    themeMode: theme.isLightTheme ? ThemeMode.light: ThemeMode.dark,
+                     home: CountryScreen());
+              }
+            ),
           );
         });
   }

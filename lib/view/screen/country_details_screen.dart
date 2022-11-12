@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/model/country_model.dart';
 import 'package:country_app/widget/country_details_widget.dart';
@@ -7,11 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CountryDetailsScreen extends StatelessWidget {
   final CountryModel countryModel;
-  const CountryDetailsScreen({Key? key, required this.countryModel}) : super(key: key);
-
+  CountryDetailsScreen({Key? key, required this.countryModel})
+      : super(key: key);
+  CarouselController controller = CarouselController();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         elevation: 0.0,
@@ -39,33 +41,46 @@ class CountryDetailsScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 24.w, right: 24.w),
         child: Column(
           children: [
-             Container(
-            height: 150,
-            width: 350,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(fit: BoxFit.cover,
-                    image: NetworkImage(countryModel.flags!.png!,))),
-          ),
-         
+            //    Container(
+            //   height: 150,
+            //   width: 350,
+            //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+            //       image: DecorationImage(fit: BoxFit.cover,
+            //           image: NetworkImage(countryModel.flags!.png!,))),
+            // ),
+            CarouselSlider(
+                carouselController: controller,
+                items: [
+                  Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                    child: Image.network(countryModel.flags!.png.toString(),fit: BoxFit.cover,)),
+                  countryModel.coatOfArms == null
+                      ? SizedBox()
+                      : Image.network(countryModel.coatOfArms!.png.toString())
+                ],
+                options: CarouselOptions(
+                    initialPage: 0,
+                    enableInfiniteScroll: true,
+                    padEnds: false,
+                    height: 200,
+                    viewportFraction: 1)),
             SizedBox(height: 24.5.h),
             Expanded(
               child: ListView(
                 padding: EdgeInsets.only(bottom: 30.h),
                 shrinkWrap: true,
                 children: [
-                 CountryDetailsWidget(
-                    text: 'Population:',
-                    value: countryModel.population.toString()
-                  ),
+                  CountryDetailsWidget(
+                      text: 'Population:',
+                      value: countryModel.population.toString()),
                   SizedBox(height: 4.h),
-                   CountryDetailsWidget(
+                  CountryDetailsWidget(
                     text: 'Region:',
                     value: countryModel.region!,
                   ),
                   SizedBox(height: 4.h),
-                 CountryDetailsWidget(
+                  CountryDetailsWidget(
                     text: 'Capital:',
-                    value: countryModel.capital![0],
+                    value: countryModel.capital![0].toString(),
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
@@ -74,11 +89,10 @@ class CountryDetailsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 24.h),
                   CountryDetailsWidget(
-                    text: 'Official language:',
-                    value: countryModel.languages.toString()
-                  ),
+                      text: 'Official language:',
+                      value: countryModel.languages.toString()),
                   SizedBox(height: 4.h),
-                   CountryDetailsWidget(
+                  CountryDetailsWidget(
                     text: 'Ethic group:',
                     value: countryModel.subregion.toString(),
                   ),
@@ -89,34 +103,29 @@ class CountryDetailsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
-                    text: 'Government:',
-                    value: 'democracry'
-                  ),
+                      text: 'Government:', value: 'democracry'),
                   SizedBox(height: 24.h),
-                   CountryDetailsWidget(
-                    text: 'Independence:',
-                    value: countryModel.independent.toString()
-                  ),
+                  CountryDetailsWidget(
+                      text: 'Independence:',
+                      value: countryModel.independent.toString()),
                   SizedBox(height: 4.h),
-                 CountryDetailsWidget(
+                  CountryDetailsWidget(
                     text: 'Area:',
                     value: countryModel.area.toString(),
                   ),
                   SizedBox(height: 4.h),
-                   CountryDetailsWidget(
-                    text: 'Currency:',
-                    value: countryModel.currencies!.toString()
-                  ),
+                  CountryDetailsWidget(
+                      text: 'Currency:',
+                      value: countryModel.currencies!.toString()),
                   SizedBox(height: 4.h),
-                   const CountryDetailsWidget(
+                  const CountryDetailsWidget(
                     text: 'GDP:',
                     value: 'US\$3.400 billion',
                   ),
                   SizedBox(height: 24.h),
                   CountryDetailsWidget(
-                    text: 'Time zone:',
-                    value: countryModel.timezones.toString()
-                  ),
+                      text: 'Time zone:',
+                      value: countryModel.timezones.toString()),
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
                     text: 'Date format:',
@@ -124,16 +133,13 @@ class CountryDetailsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 4.h),
                   CountryDetailsWidget(
-                    text: 'Dialling code:',
-                    value: countryModel.idd!.root.toString()
-                  ),
+                      text: 'Dialling code:',
+                      value: countryModel.idd!.root.toString()),
                   SizedBox(height: 4.h),
                   CountryDetailsWidget(
-                    text: 'Driving side:',
-                    value: countryModel.car!.side.toString()
-                  ),
+                      text: 'Driving side:',
+                      value: countryModel.car!.side.toString()),
                   SizedBox(height: 24.h),
-                  
                 ],
               ),
             )
