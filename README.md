@@ -10,6 +10,5 @@ google_font: For fontstyle
 Challenge faced:
 The model showed me shege when consuming the api.
 
-Apk link: https://drive.google.com/file/d/157-U9PPlTbgx-UmwJpAS3N_4SS0ABjd4/view?usp=share_link
 
-Appetize link : https://appetize.io/app/gvlmp2umwxhwxg7vz6y2iz7rsa?device=pixel4&osVersion=11.0&scale=75
+
