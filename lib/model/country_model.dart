@@ -84,9 +84,9 @@ class CountryModel {
         ? Currencies.fromJson(json['currencies'])
         : null;
     idd = json['idd'] != null ? Idd.fromJson(json['idd']) : null;
-    capital = json['capital'];
+    capital = json['capital'] ?? [""];
     altSpellings = json['altSpellings'].cast<String>();
-    region = json['region'];
+    region = json['region'] ;
     subregion = json['subregion'];
     languages = json['languages'] != null
         ? Languages.fromJson(json['languages'])
@@ -267,9 +267,8 @@ class BBD {
   String? symbol;
 
   BBD({this.name, this.symbol});
-
   BBD.fromJson(Map<String, dynamic> json) {
-    name = json['name'];
+    name = json['name']?? '';
     symbol = json['symbol'];
   }
 

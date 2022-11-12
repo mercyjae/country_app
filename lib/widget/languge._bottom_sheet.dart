@@ -1,4 +1,4 @@
-import 'package:country_app/provider/country_provider.dart';
+import 'package:country_app/controller/country_provider.dart';
 import 'package:country_app/widget/language_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

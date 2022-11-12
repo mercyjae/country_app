@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FilterWidget extends StatelessWidget {
+class CountryTile extends StatelessWidget {
   final double containerWidth;
   final Color color;
   final String text;
   final IconData? icon;
   final VoidCallback onTap;
-  const FilterWidget({
+  const CountryTile({
     Key? key,
     required this.containerWidth,
     required this.color,

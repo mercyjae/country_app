@@ -10,4 +10,5 @@ class AppColors {
   static const Color containerBorderColor = Color(0xFFA9B8D5);
   static const Color containerBgColor = Color(0xFFFCFCFD);
   static const Color containerBoxShadowRgba = Color.fromRGBO(16, 24, 40, 0.05);
+  static const Color yellowColor = Color(0xFFFF6C00);
 }

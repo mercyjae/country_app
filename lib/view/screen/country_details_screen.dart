@@ -1,6 +1,6 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/model/country_model.dart';
-import 'package:country_app/widget/country_widget.dart';
+import 'package:country_app/widget/country_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,8 +42,8 @@ class CountryDetailsScreen extends StatelessWidget {
              Container(
             height: 150,
             width: 350,
-            decoration: BoxDecoration(
-                image: DecorationImage(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(fit: BoxFit.cover,
                     image: NetworkImage(countryModel.flags!.png!,))),
           ),
          
@@ -53,82 +53,82 @@ class CountryDetailsScreen extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 30.h),
                 shrinkWrap: true,
                 children: [
-                 CountryDetailsTextWidget(
+                 CountryDetailsWidget(
                     text: 'Population:',
                     value: countryModel.population.toString()
                   ),
                   SizedBox(height: 4.h),
-                   CountryDetailsTextWidget(
+                   CountryDetailsWidget(
                     text: 'Region:',
                     value: countryModel.region!,
                   ),
                   SizedBox(height: 4.h),
-                 CountryDetailsTextWidget(
+                 CountryDetailsWidget(
                     text: 'Capital:',
-                    value: countryModel.capital!.toString()
+                    value: countryModel.capital![0],
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                  const CountryDetailsWidget(
                     text: 'Motto:',
                     value: 'Virtus unita fortior',
                   ),
                   SizedBox(height: 24.h),
-                  CountryDetailsTextWidget(
+                  CountryDetailsWidget(
                     text: 'Official language:',
                     value: countryModel.languages.toString()
                   ),
                   SizedBox(height: 4.h),
-                   CountryDetailsTextWidget(
+                   CountryDetailsWidget(
                     text: 'Ethic group:',
                     value: countryModel.subregion.toString(),
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                  const CountryDetailsWidget(
                     text: 'Religion:',
                     value: 'Christianity',
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                  const CountryDetailsWidget(
                     text: 'Government:',
                     value: 'democracry'
                   ),
                   SizedBox(height: 24.h),
-                   CountryDetailsTextWidget(
+                   CountryDetailsWidget(
                     text: 'Independence:',
                     value: countryModel.independent.toString()
                   ),
                   SizedBox(height: 4.h),
-                 CountryDetailsTextWidget(
+                 CountryDetailsWidget(
                     text: 'Area:',
                     value: countryModel.area.toString(),
                   ),
                   SizedBox(height: 4.h),
-                   CountryDetailsTextWidget(
+                   CountryDetailsWidget(
                     text: 'Currency:',
-                    value: countryModel.currencies!.bBD.toString()
+                    value: countryModel.currencies!.toString()
                   ),
                   SizedBox(height: 4.h),
-                   const CountryDetailsTextWidget(
+                   const CountryDetailsWidget(
                     text: 'GDP:',
                     value: 'US\$3.400 billion',
                   ),
                   SizedBox(height: 24.h),
-                  CountryDetailsTextWidget(
+                  CountryDetailsWidget(
                     text: 'Time zone:',
                     value: countryModel.timezones.toString()
                   ),
                   SizedBox(height: 4.h),
-                  const CountryDetailsTextWidget(
+                  const CountryDetailsWidget(
                     text: 'Date format:',
                     value: 'dd/mm/yyyy',
                   ),
                   SizedBox(height: 4.h),
-                  CountryDetailsTextWidget(
+                  CountryDetailsWidget(
                     text: 'Dialling code:',
                     value: countryModel.idd!.root.toString()
                   ),
                   SizedBox(height: 4.h),
-                  CountryDetailsTextWidget(
+                  CountryDetailsWidget(
                     text: 'Driving side:',
                     value: countryModel.car!.side.toString()
                   ),
