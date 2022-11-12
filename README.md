@@ -1,16 +1,15 @@
-# country_app
+Description of the app:
+A responsive country app which display a list of countries using Rest API. When a user taps on any of the countries in the list, it takes should navigate to the details screen and show the details of the country.
 
-A new Flutter project.
+Package used: 
+Provider: For state management
+flutter_screenutil : For responsiveness
+http: To fetch data from the internet
+google_font: For fontstle
 
-## Getting Started
+Challenge faced:
+The model showed me shege when consuming the api.
 
-This project is a starting point for a Flutter application.
+Apk link: https://drive.google.com/file/d/157-U9PPlTbgx-UmwJpAS3N_4SS0ABjd4/view?usp=share_link
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Appetize link : https://appetize.io/app/gvlmp2umwxhwxg7vz6y2iz7rsa?device=pixel4&osVersion=11.0&scale=75
