@@ -41,21 +41,29 @@ class CountryDetailsScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 24.w, right: 24.w),
         child: Column(
           children: [
-            //    Container(
-            //   height: 150,
-            //   width: 350,
-            //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-            //       image: DecorationImage(fit: BoxFit.cover,
-            //           image: NetworkImage(countryModel.flags!.png!,))),
-            // ),
+          
             CarouselSlider(
                 carouselController: controller,
                 items: [
-                  Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                    child: Image.network(countryModel.flags!.png.toString(),fit: BoxFit.cover,)),
+     Container(
+              height: 150,
+              width: 350,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(fit: BoxFit.cover,
+                      image: NetworkImage(countryModel.flags!.png!,))),
+            ),
+                  // Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                  //   child: Image.network(countryModel.flags!.png.toString(),fit: BoxFit.cover,)),
                   countryModel.coatOfArms == null
                       ? SizedBox()
-                      : Image.network(countryModel.coatOfArms!.png.toString())
+                      : 
+                      Container(
+              height: 150,
+              width: 350,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(fit: BoxFit.cover,
+                      image: NetworkImage(countryModel.coatOfArms!.png.toString())))),
+                     
                 ],
                 options: CarouselOptions(
                     initialPage: 0,
@@ -103,7 +111,7 @@ class CountryDetailsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
-                      text: 'Government:', value: 'democracry'),
+                      text: 'Government:', value: 'Democracry'),
                   SizedBox(height: 24.h),
                   CountryDetailsWidget(
                       text: 'Independence:',
@@ -129,7 +137,7 @@ class CountryDetailsScreen extends StatelessWidget {
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
                     text: 'Date format:',
-                    value: 'dd/mm/yyyy',
+                    value: '20/12/2020',
                   ),
                   SizedBox(height: 4.h),
                   CountryDetailsWidget(

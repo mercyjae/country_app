@@ -37,7 +37,8 @@ class _CountryScreenState extends State<CountryScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Explore",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 20),),
+                  Text("Explore",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 22,
+                  fontWeight: FontWeight.bold),),
                   Consumer<ThemeProvider>(
                     builder: (context,theme,child) {
                       return 

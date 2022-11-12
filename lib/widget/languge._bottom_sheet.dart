@@ -16,13 +16,15 @@ void showLanguaugeBottomsheet(BuildContext context) {
       return StatefulBuilder(
         builder: (context,StateSetter setState) {
           return Container(
-            height: 540,
+            height: 550,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   SizedBox(height: 2.h),
+                  SizedBox(
+                height: 25,
+              ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
