@@ -1,9 +1,9 @@
-import 'package:country_app/constant/color.dart';
+
 import 'package:country_app/model/country_model.dart';
 import 'package:country_app/view/screen/country_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class CountryWidget extends StatelessWidget {
   final CountryModel countryModel;

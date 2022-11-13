@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +14,6 @@ class AppColors {
   static const Color yellowColor = Color(0xFFFF6C00);
 }
 
-
 class MyTheme {
   static final darkTheme = ThemeData(
       appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
@@ -26,55 +24,51 @@ class MyTheme {
       buttonTheme: const ButtonThemeData(
         buttonColor: Colors.blueGrey,
       ),
-      iconTheme: const IconThemeData(
-        color: Colors.white
-      ),
+      iconTheme: const IconThemeData(color: Colors.white),
       colorScheme: const ColorScheme.dark(
         secondary: Colors.white,
-         primary: Color(0xFF98A2B3),
+        primary: Color(0xFF98A2B3),
       ),
       textTheme: TextTheme(
-        button: TextStyle(color: Colors.grey),
-      
-          bodyText1:  GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFFF2F4F7)
-                ),
+        button: const TextStyle(color: Colors.grey),
+        bodyText1: GoogleFonts.poppins(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+            color: const Color(0xFFF2F4F7)),
         bodyText2: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF98A2B3),
-                ),
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: const Color(0xFF98A2B3),
+        ),
+        headline3: GoogleFonts.pacifico(
+            fontSize: 38.sp, fontWeight: FontWeight.w400, color: Colors.white),
       ));
 
   static final lightTheme = ThemeData(
       appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
       scaffoldBackgroundColor: Colors.white,
       colorScheme: const ColorScheme.light(
-        secondary: Colors.black,
-        primary: Color(0xFFF2F4F7)
-      ),
-      iconTheme: const IconThemeData(
-        color: Colors.black
-      ),
+          secondary: Colors.black, primary: Color(0xFFF2F4F7)),
+      iconTheme: const IconThemeData(color: Colors.black),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 189, 189, 189))),
-     
       buttonTheme: const ButtonThemeData(
         buttonColor: Colors.green,
       ),
       textTheme: TextTheme(
-          button: const TextStyle(color: Colors.orange),
-          bodyText1:  GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF1C1917),
-                ),
-                bodyText2: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF667085),
-                ),));
+        button: const TextStyle(color: Colors.orange),
+        bodyText1: GoogleFonts.poppins(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: const Color(0xFF1C1917),
+        ),
+        bodyText2: GoogleFonts.poppins(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          color: const Color(0xFF667085),
+        ),
+        headline3: GoogleFonts.pacifico(
+            fontSize: 35.sp, fontWeight: FontWeight.w400, color: Colors.black),
+      ));
 }

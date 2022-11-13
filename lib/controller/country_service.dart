@@ -10,7 +10,7 @@ class CountryService {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      //   print(jsonData[0]['BBD']['name']);
+       print(jsonData);
       return List.from(jsonData).map((e) => CountryModel.fromJson(e)).toList();
     } else {
       throw Exception('Failed to load country data');

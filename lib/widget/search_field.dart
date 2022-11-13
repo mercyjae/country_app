@@ -7,46 +7,36 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SearchField extends StatefulWidget {
-   SearchField({Key? key}) : super(key: key);
+  SearchField({Key? key}) : super(key: key);
 
   @override
   State<SearchField> createState() => _SearchFieldState();
 }
 
 class _SearchFieldState extends State<SearchField> {
- 
- final TextEditingController searchController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final countryProvider = Provider.of<CountryProvider>(context);
     return SizedBox(
       height: 60.h,
-      child: TextFormField(controller: searchController,
-      onChanged: ((value) {
-   countryProvider.filterItems(value);
-      }),
+      child: TextFormField(
+        controller: searchController, 
+        onChanged: ((value) {
+          countryProvider.filterItems(value);
+        }),
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           border: InputBorder.none,
           prefixIcon: const Icon(
             Icons.search,
-            color: AppColors.searchIconColor,
           ),
           filled: true,
           fillColor: Theme.of(context).colorScheme.primary,
-         
           hintText: 'Search Country',
-          hintStyle: Theme.of(context).textTheme.bodyText1,
-         
-          // enabledBorder: OutlineInputBorder(
-          //   borderSide: const BorderSide(color: AppColors.textFormFieldBgColor),
-          //   borderRadius: BorderRadius.circular(4.r),
-          // ),
-          // focusedBorder: OutlineInputBorder(
-          //   borderSide: const BorderSide(color: AppColors.textFormFieldBgColor),
-          //   borderRadius: BorderRadius.circular(4.r),
-          // ),
+          hintStyle:
+              Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 18.sp),
         ),
       ),
     );

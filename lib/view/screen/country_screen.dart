@@ -1,10 +1,12 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/controller/country_provider.dart';
 import 'package:country_app/controller/theme_provider.dart';
+import 'package:country_app/widget/continent_tile.dart';
 import 'package:country_app/widget/country_tile.dart';
 import 'package:country_app/widget/country_widget.dart';
-import 'package:country_app/widget/filter_bottom_sheet.dart';
-import 'package:country_app/widget/languge._bottom_sheet.dart';
+import 'package:country_app/widget/filter_tile.dart';
+import 'package:country_app/widget/language_tile.dart';
+
 import 'package:country_app/widget/search_field.dart';
 
 import 'package:flutter/material.dart';
@@ -37,8 +39,7 @@ class _CountryScreenState extends State<CountryScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Explore",style: Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 22,
-                  fontWeight: FontWeight.bold),),
+                  Text("Explore",style: Theme.of(context).textTheme.headline3),
                   Consumer<ThemeProvider>(
                     builder: (context,theme,child) {
                       return 
@@ -66,7 +67,16 @@ class _CountryScreenState extends State<CountryScreen> {
                 children: [
                   CountryTile(
                     onTap: () {
-                      showLanguaugeBottomsheet(context);
+                         showModalBottomSheet(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30),
+                              topLeft: Radius.circular(30),
+                            )),
+                            context: context,
+                            builder: (context) {
+                              return  LanguageTile();
+                            });
                     },
                     containerWidth: 73.w,
                     color: AppColors.whiteColor,
@@ -75,7 +85,16 @@ class _CountryScreenState extends State<CountryScreen> {
                   ),
                   CountryTile(
                     onTap: () {
-                      showFilterBottomSheet(context);
+                   showModalBottomSheet(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30),
+                              topLeft: Radius.circular(30),
+                            )),
+                            context: context,
+                            builder: (context) {
+                              return const FilterTile();
+                            });
                     },
                     containerWidth: 96.w,
                     color: AppColors.containerBgColor,

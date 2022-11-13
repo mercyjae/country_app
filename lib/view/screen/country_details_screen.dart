@@ -1,31 +1,33 @@
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/model/country_model.dart';
 import 'package:country_app/widget/country_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CountryDetailsScreen extends StatelessWidget {
   final CountryModel countryModel;
   CountryDetailsScreen({Key? key, required this.countryModel})
       : super(key: key);
-  CarouselController controller = CarouselController();
+  PageController controller = PageController();
+  int yourActiveIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        backgroundColor: AppColors.whiteColor,
+     
         automaticallyImplyLeading: false,
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: Icon(
             Icons.arrow_back,
             size: 30.sp,
-            color: AppColors.blackColor,
+           
           ),
         ),
         title: Text(
@@ -41,36 +43,73 @@ class CountryDetailsScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 24.w, right: 24.w),
         child: Column(
           children: [
-          
-            CarouselSlider(
-                carouselController: controller,
-                items: [
-     Container(
-              height: 150,
-              width: 350,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(fit: BoxFit.cover,
-                      image: NetworkImage(countryModel.flags!.png!,))),
-            ),
-                  // Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                  //   child: Image.network(countryModel.flags!.png.toString(),fit: BoxFit.cover,)),
-                  countryModel.coatOfArms == null
-                      ? SizedBox()
-                      : 
+            Expanded(
+              child: Stack(
+                children: [
+                  PageView(
+                    controller: controller,
+                    children: [
                       Container(
-              height: 150,
-              width: 350,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(fit: BoxFit.cover,
-                      image: NetworkImage(countryModel.coatOfArms!.png.toString())))),
-                     
+                        //margin: EdgeInsets.only(bottom: 90),
+                        height: 50,
+                        width: 350,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                                image: NetworkImage(   
+                                  countryModel.flags!.png!.toString(),
+                                ))),
+                      ),
+                      // Container(
+                      //   height: 50,
+                      //   width: 350,
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       image: DecorationImage(
+                      //           fit: BoxFit.cover,
+                      //           image: NetworkImage(
+                      //             countryModel.maps!.toString(),
+                      //           ))),
+                      // ),
+                      countryModel.coatOfArms == null
+                          ? SizedBox()
+                          : Container(padding: EdgeInsets.symmetric(),
+                              height: 50,
+                              width: 350,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(countryModel
+                                          .coatOfArms!.png
+                                          .toString())))),
+                    ],
+                  ),
+                     Positioned(top: 320.h,
+                       child: SmoothPageIndicator(
+                                     count: 4,
+                                     effect: WormEffect(
+                        spacing: 8.0,
+                        radius: 4.0,
+                        dotWidth: 10.0,
+                        dotHeight: 10.0,
+                        paintStyle: PaintingStyle.stroke,
+                        strokeWidth: 1.5,
+                        dotColor: Colors.grey,
+                        activeDotColor: Colors.white),
+                                     controller: controller,
+                                     onDotClicked: ((index) { 
+                                       controller.animateToPage(index,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.bounceInOut);
+                                     })),
+                     ),
                 ],
-                options: CarouselOptions(
-                    initialPage: 0,
-                    enableInfiniteScroll: true,
-                    padEnds: false,
-                    height: 200,
-                    viewportFraction: 1)),
+              ),
+            ),
+         
+
             SizedBox(height: 24.5.h),
             Expanded(
               child: ListView(
@@ -98,7 +137,7 @@ class CountryDetailsScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
                   CountryDetailsWidget(
                       text: 'Official language:',
-                      value: countryModel.languages.toString()),
+                      value: countryModel.languages!.values.first),
                   SizedBox(height: 4.h),
                   CountryDetailsWidget(
                     text: 'Ethic group:',
@@ -124,7 +163,7 @@ class CountryDetailsScreen extends StatelessWidget {
                   SizedBox(height: 4.h),
                   CountryDetailsWidget(
                       text: 'Currency:',
-                      value: countryModel.currencies!.toString()),
+                      value: countryModel.currencies!.values.first['name'],),
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
                     text: 'GDP:',
@@ -133,7 +172,8 @@ class CountryDetailsScreen extends StatelessWidget {
                   SizedBox(height: 24.h),
                   CountryDetailsWidget(
                       text: 'Time zone:',
-                      value: countryModel.timezones.toString()),
+                      value: countryModel.timezones.toString().substring(
+                          1, countryModel.timezones.toString().length - 1)),
                   SizedBox(height: 4.h),
                   const CountryDetailsWidget(
                     text: 'Date format:',

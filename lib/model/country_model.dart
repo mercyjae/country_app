@@ -10,7 +10,7 @@ class CountryModel {
   bool? independent;
   String? status;
   bool? unMember;
-  Currencies? currencies;
+  Map<String, dynamic>? currencies;
   Idd? idd;
   List<dynamic>? capital;
   List<String>? altSpellings;
@@ -80,9 +80,7 @@ class CountryModel {
     independent = json['independent'];
     status = json['status'];
     unMember = json['unMember'];
-    currencies = json['currencies'] != null
-        ? Currencies.fromJson(json['currencies'])
-        : null;
+    currencies = json['currencies'];
     idd = json['idd'] != null ? Idd.fromJson(json['idd']) : null;
     capital = json['capital'] ?? [""];
     altSpellings = json['altSpellings'].cast<String>();
@@ -131,7 +129,7 @@ class CountryModel {
     data['status'] = status;
     data['unMember'] = unMember;
     if (currencies != null) {
-      data['currencies'] = currencies!.toJson();
+      data['currencies'] = currencies!.toString();
     }
     if (idd != null) {
       data['idd'] = idd!.toJson();
