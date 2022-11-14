@@ -5,13 +5,16 @@ Package used:
 Provider: For state management   
 flutter_screenutil : For responsiveness    
 http: To fetch data from the internet  
-google_font: For fontstyle
-carousel_slider: To display scrollable images.
+google_font: For fontstyle 
+carousel_slider: To display scrollable images. 
+smooth_page-indicator : For indicators
 
 Challenge faced:
 The model showed me shege when consuming the api.
 
-Appetizer link : https://appetize.io/app/ds2yc4oxqkfmxx4njrshmblnhy?device=pixel4&osVersion=11.0&scale=75
+APK link : 
+
+Appetizer link :https://appetize.io/app/pgso3uyaruwego6mp7ft74757q?device=pixel4&osVersion=11.0&scale=75
 
 
 
