@@ -1,4 +1,4 @@
-import 'package:country_app/widget/continent_tile.dart';
+import 'package:country_app/view/widget/continent_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -65,7 +65,7 @@ class _FilterTileState extends State<FilterTile> {
                           children: List.generate(
                             7,
                             (index) =>
-                                ContinentTile(title: continents[index]),
+                                FilterWidget(title: continents[index]),
                           ),
                         )
                       : const SizedBox(),
@@ -96,7 +96,7 @@ class _FilterTileState extends State<FilterTile> {
                           children: List.generate(
                             8,
                             (index) =>
-                                ContinentTile (title: timeZones[index]),
+                                FilterWidget (title: timeZones[index]),
                           ),
                         )
                       : const SizedBox(),

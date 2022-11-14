@@ -1,9 +1,7 @@
-import 'package:country_app/constant/color.dart';
 import 'package:country_app/controller/country_provider.dart';
-import 'package:country_app/model/country_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SearchField extends StatefulWidget {
@@ -22,7 +20,7 @@ class _SearchFieldState extends State<SearchField> {
     return SizedBox(
       height: 60.h,
       child: TextFormField(
-        controller: searchController, 
+        controller: searchController,
         onChanged: ((value) {
           countryProvider.filterItems(value);
         }),

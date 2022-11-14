@@ -1,18 +1,17 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/controller/country_provider.dart';
 import 'package:country_app/controller/theme_provider.dart';
-import 'package:country_app/widget/continent_tile.dart';
-import 'package:country_app/widget/country_tile.dart';
-import 'package:country_app/widget/country_widget.dart';
-import 'package:country_app/widget/filter_tile.dart';
-import 'package:country_app/widget/language_tile.dart';
+import 'package:country_app/view/widget/country_section.dart';
+import 'package:country_app/view/widget/country_tile.dart';
+import 'package:country_app/view/widget/filter_tile.dart';
+import 'package:country_app/view/widget/language_tile.dart';
 
-import 'package:country_app/widget/search_field.dart';
+import 'package:country_app/view/widget/search_field.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:provider/provider.dart';
 
 class CountryScreen extends StatefulWidget {
@@ -28,46 +27,45 @@ class _CountryScreenState extends State<CountryScreen> {
   Widget build(BuildContext context) {
     final countryProvider = Provider.of<CountryProvider>(context);
 
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.only(left: 24.w, right: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 20.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Explore",style: Theme.of(context).textTheme.headline3),
-                  Consumer<ThemeProvider>(
-                    builder: (context,theme,child) {
-                      return 
-                      InkWell(onTap: (){theme.changeTheme();},
-                        child:theme.isLightTheme
-                         ? SvgPicture.asset(
-                              'assets/sun.svg',
-                              color: Colors.black,
-                            )
-                          : SvgPicture.asset(
-                              'assets/moon.svg',
-                              
-                            )
-                     
-                      );
-                    }
-                  ),
-                ],
-              ),
-              SizedBox(height: 24.h),
-              SearchField(),
-              SizedBox(height: 16.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CountryTile(
-                    onTap: () {
-                         showModalBottomSheet(
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Explore",
+                        style: Theme.of(context).textTheme.headline3),
+                    Consumer<ThemeProvider>(builder: (context, theme, child) {
+                      return InkWell(
+                          onTap: () {
+                            theme.changeTheme();
+                          },
+                          child: theme.isLightTheme
+                              ? SvgPicture.asset(
+                                  'assets/sun.svg',
+                                  color: Colors.black,
+                                )
+                              : SvgPicture.asset(
+                                  'assets/moon.svg',
+                                ));
+                    }),
+                  ],
+                ),
+                SizedBox(height: 24.h),
+                SearchField(),
+                SizedBox(height: 16.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CountryTile(
+                      onTap: () {
+                        showModalBottomSheet(
                             shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                               topRight: Radius.circular(30),
@@ -75,17 +73,17 @@ class _CountryScreenState extends State<CountryScreen> {
                             )),
                             context: context,
                             builder: (context) {
-                              return  LanguageTile();
+                              return const LanguageTile();
                             });
-                    },
-                    containerWidth: 73.w,
-                    color: AppColors.whiteColor,
-                    icon: Icons.language,
-                    text: "EN",
-                  ),
-                  CountryTile(
-                    onTap: () {
-                   showModalBottomSheet(
+                      },
+                      containerWidth: 73.w,
+                      color: AppColors.whiteColor,
+                      icon: Icons.language,
+                      text: "EN",
+                    ),
+                    CountryTile(
+                      onTap: () {
+                        showModalBottomSheet(
                             shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
                               topRight: Radius.circular(30),
@@ -95,37 +93,43 @@ class _CountryScreenState extends State<CountryScreen> {
                             builder: (context) {
                               return const FilterTile();
                             });
-                    },
-                    containerWidth: 96.w,
-                    color: AppColors.containerBgColor,
-                    icon: Icons.filter_alt_outlined,
-                    text: "Filter",
-                  ),
-                ],
-              ),
-              SizedBox(height: 16.h),
-              Text(
-                'A',
-                style: GoogleFonts.poppins(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.searchIconColor,
+                      },
+                      containerWidth: 96.w,
+                      color: AppColors.containerBgColor,
+                      icon: Icons.filter_alt_outlined,
+                      text: "Filter",
+                    ),
+                  ],
                 ),
-              ),
-              Expanded(
-                child: ListView.separated(
-                  itemCount: countryProvider.foundList.length,
-                  itemBuilder: (context, index) {
-                    return CountryWidget(
-                      countryModel: countryProvider.foundList[index],
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return SizedBox(height: 20.h);
-                  },
-                ),
-              ),
-            ],
+                SizedBox(height: 16.h),
+                CountrySection(countryProvider: countryProvider, letter: 'A'),
+                CountrySection(countryProvider: countryProvider, letter: 'B'),
+                CountrySection(countryProvider: countryProvider, letter: 'C'),
+                CountrySection(countryProvider: countryProvider, letter: 'D'),
+                CountrySection(countryProvider: countryProvider, letter: 'E'),
+                CountrySection(countryProvider: countryProvider, letter: 'F'),
+                CountrySection(countryProvider: countryProvider, letter: 'G'),
+                CountrySection(countryProvider: countryProvider, letter: 'H'),
+                CountrySection(countryProvider: countryProvider, letter: 'I'),
+                CountrySection(countryProvider: countryProvider, letter: 'J'),
+                CountrySection(countryProvider: countryProvider, letter: 'K'),
+                CountrySection(countryProvider: countryProvider, letter: 'L'),
+                CountrySection(countryProvider: countryProvider, letter: 'M'),
+                CountrySection(countryProvider: countryProvider, letter: 'N'),
+                CountrySection(countryProvider: countryProvider, letter: 'O'),
+                CountrySection(countryProvider: countryProvider, letter: 'P'),
+                CountrySection(countryProvider: countryProvider, letter: 'Q'),
+                CountrySection(countryProvider: countryProvider, letter: 'R'),
+                CountrySection(countryProvider: countryProvider, letter: 'S'),
+                CountrySection(countryProvider: countryProvider, letter: 'T'),
+                CountrySection(countryProvider: countryProvider, letter: 'U'),
+                CountrySection(countryProvider: countryProvider, letter: 'V'),
+                CountrySection(countryProvider: countryProvider, letter: 'W'),
+                CountrySection(countryProvider: countryProvider, letter: 'X'),
+                CountrySection(countryProvider: countryProvider, letter: 'Y'),
+                CountrySection(countryProvider: countryProvider, letter: 'Z'),
+              ],
+            ),
           ),
         ),
       ),

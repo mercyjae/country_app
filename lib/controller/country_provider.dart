@@ -1,9 +1,13 @@
 import 'package:country_app/model/country_model.dart';
 import 'package:country_app/controller/country_service.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+enum ProviderState { loading, errorOccured, loaded }
 
 class CountryProvider extends ChangeNotifier {
   bool isLoading = false;
+  String stateMessage = "";
+  ProviderState state = ProviderState.loading;
   List<CountryModel> countries = [];
 
   CountryProvider() {
@@ -11,27 +15,27 @@ class CountryProvider extends ChangeNotifier {
   }
 
   Future<void> fetchCountries() async {
-    isLoading = true;
-    notifyListeners();
-    countries = await CountryService().getCountryList();
-    countries.sort((a, b) => a.name!.common!.compareTo(b.name!.common!));
-    foundList = countries;
-    isLoading = false;
-    notifyListeners();
-  }
-
-  String lang = "";
-
-  void changeLanguage(String lng) {
-    lang = lng;
-    notifyListeners();
+    try {
+      state = ProviderState.loading;
+      notifyListeners();
+      countries = await CountryService().getCountryList();
+      countries.sort((a, b) => a.name!.common!.compareTo(b.name!.common!));
+      foundList = countries;
+      state = ProviderState.loaded;
+      notifyListeners();
+    } catch (error) {
+      state = ProviderState.errorOccured;
+      stateMessage = "Error: $error";
+    
+      notifyListeners();
+    }
   }
 
   List<CountryModel> foundList = [];
 
   List<CountryModel> searchList = [];
   void filterItems(String items) {
-    print("Search Paran ::; $items");
+ 
     if (items.isEmpty) {
       searchList = countries;
     } else {

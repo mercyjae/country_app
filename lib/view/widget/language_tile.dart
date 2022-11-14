@@ -43,7 +43,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Bahasa', style:themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Bahasa",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -59,7 +59,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Deutsch', style: themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Deutsch",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -75,7 +75,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('English', style:themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "English",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -91,7 +91,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Française', style: themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Française",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -107,7 +107,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Italiano', style: themeData.textTheme.bodyText1,),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Italiano",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -139,7 +139,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Pу́сский', style:themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Pу́сский",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -155,7 +155,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Svenska', style: themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Svenska",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -171,7 +171,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('Türkçe', style: themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "Türkçe",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -187,7 +187,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('普通话', style: themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "普通话",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -203,7 +203,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('بالعربية', style:themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "بالعربية",
                   groupValue: groupValue,
                   onChanged: (value) {
@@ -219,7 +219,7 @@ class _LanguageTileState extends State<LanguageTile> {
               children: [
                 Text('বাঙ্গালী', style: themeData.textTheme.bodyText1),
                 Radio(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).iconTheme.color,
                   value: "বাঙ্গালী",
                   groupValue: groupValue,
                   onChanged: (value) {

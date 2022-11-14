@@ -1,17 +1,16 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class ContinentTile extends StatefulWidget {
+import 'package:flutter/material.dart';
+
+
+class FilterWidget extends StatefulWidget {
   final String title;
-   ContinentTile({super.key, required this.title});
+   FilterWidget({super.key, required this.title});
 
   @override
-  State<ContinentTile> createState() => _ContinentTileState();
+  State<FilterWidget> createState() => _FilterWidgetState();
 }
 
-class _ContinentTileState extends State<ContinentTile> {
+class _FilterWidgetState extends State<FilterWidget> {
   @override
     bool? checkValue = false;
 
@@ -25,7 +24,8 @@ class _ContinentTileState extends State<ContinentTile> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    activeColor: Colors.purple,
+                    checkColor:Theme.of(context).scaffoldBackgroundColor,
+                    activeColor: Theme.of(context).iconTheme.color,
                     onChanged: (bool? newValue) {
                        setState(() {
                       checkValue = newValue;

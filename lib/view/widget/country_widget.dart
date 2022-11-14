@@ -28,12 +28,12 @@ class CountryWidget extends StatelessWidget {
         children: [
           Container(
             height: 40,
-            width: 50,
+            width: 50, 
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(fit: BoxFit.cover,
                     image: NetworkImage(countryModel.flags!.png!))),
           ),
-          SizedBox(width: 16.w),
+          SizedBox(width: 18.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
