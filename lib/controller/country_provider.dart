@@ -50,4 +50,21 @@ class CountryProvider extends ChangeNotifier {
     foundList = searchList;
     notifyListeners();
   }
+
+  List<CountryModel> get _countries => countries;
+
+  void toggeleFavourite(CountryModel item) {
+    final isExist = _countries.contains(item);
+    if (isExist) {
+      _countries.remove(item);
+    } else {
+      _countries.add(item);
+    }
+    notifyListeners();
+  }
+
+  bool isExist(CountryModel item) {
+    final isExist = _countries.contains(item);
+    return isExist;
+  }
 }

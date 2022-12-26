@@ -1,6 +1,6 @@
 
 
-class CountryModel {
+class CountryModel{
   Name? name;
   List<dynamic>? tld;
   String? cca2;

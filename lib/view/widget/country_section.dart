@@ -1,7 +1,9 @@
 import 'package:country_app/controller/country_provider.dart';
+import 'package:country_app/controller/favourites_provider.dart';
 import 'package:country_app/view/widget/country_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class CountrySection extends StatelessWidget {
   final CountryProvider countryProvider;
@@ -11,6 +13,7 @@ class CountrySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<CountryProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,24 +22,33 @@ class CountrySection extends StatelessWidget {
           style: Theme.of(context).textTheme.bodySmall,
         ),
         SizedBox(height: 1.0.h,),
-          Expanded(flex: 0,
-                child: ListView.separated(
-                  physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-                  itemCount: countryProvider.foundList.length,
-                  itemBuilder: (context, index) {
-                     if (countryProvider.foundList[index].name!.common!
-                        .startsWith(letter) &&
-                    countryProvider.foundList[index].name!.common! != 'Antarctica') {
-                  return CountryWidget(countryModel: countryProvider.foundList[index]);
-                }
-                return const SizedBox();
-                  },
-                  separatorBuilder: (context, index) {
-                    return SizedBox(height: 20.h);
-                  },
-                ),
-              ),
+          Row(
+            children: [
+              Expanded(flex: 0,
+                    child: ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                      itemCount: countryProvider.foundList.length,
+                      itemBuilder: (context, index) {
+                         if (countryProvider.foundList[index].name!.common!
+                            .startsWith(letter) &&
+                        countryProvider.foundList[index].name!.common! != 'Antarctica') {
+                      return CountryWidget(countryModel: countryProvider.foundList[index]);
+                    }
+                    return const SizedBox();
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(height: 20.h);
+                      },
+                    ),
+                  ),
+                  IconButton(onPressed: (){
+                    countryProvider.toggeleFavourite(item);
+
+                  }, icon: countryProvider.isExist ?
+                  Icon(Icons.favorite) : Icon(Icons.favorite_border))
+            ],
+          ),
  
       ],
     );
