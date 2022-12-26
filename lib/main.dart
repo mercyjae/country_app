@@ -1,4 +1,5 @@
 import 'package:country_app/constant/color.dart';
+import 'package:country_app/controller/favourites_provider.dart';
 import 'package:country_app/controller/theme_provider.dart';
 import 'package:country_app/view/screen/country_screen.dart';
 import 'package:country_app/controller/country_provider.dart';
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
             providers: [
               ChangeNotifierProvider<CountryProvider>(
                   create: (context) => CountryProvider()),
-                  ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider())
+                  ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider()),
+                   ChangeNotifierProvider<FavouriteProvider>(
+                  create: (context) => FavouriteProvider()),
             ],
             child: Consumer<ThemeProvider>(
               builder: (context, theme, child) {

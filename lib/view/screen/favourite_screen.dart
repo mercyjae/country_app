@@ -1,4 +1,5 @@
 import 'package:country_app/controller/country_provider.dart';
+import 'package:country_app/controller/favourites_provider.dart';
 import 'package:country_app/model/country_model.dart';
 import 'package:country_app/view/widget/country_widget.dart';
 import 'package:flutter/material.dart';
@@ -15,37 +16,39 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData themedata = Theme.of(context);
-    final provide =  Provider.of<CountryProvider>(context);
-    return  Column(children: [
-        ListView.separated(
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemCount: countryProvider.countries.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: Container(
-            height: 40,
-            width: 50, 
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(fit: BoxFit.cover,
-                    image: NetworkImage(countryProvider.countries[index].flags!.png!))),
-          ),title:Text(countryProvider.countries[index].name!.common!,
-                
-                style: themedata.textTheme.bodyText1
-              ),
-              subtitle:Text(countryProvider.countries[index].capital![0],
-             
-                style: themedata.textTheme.bodyText2
-              ),  trailing: IconButton(onPressed: (){},
-                icon: Icon(Icons.delete),),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return SizedBox(height: 20.h);
-          },
-        ),
-      ]);
-    
+    final provide =  Provider.of<FavouriteProvider>(context);
+    return  Scaffold(appBar: AppBar(title: Text("Favourite Screen",),backgroundColor: Colors.red,),
+      body: ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: provide.countries.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Container(
+          height: 40,
+          width: 50, 
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(fit: BoxFit.cover,
+                  image: NetworkImage(provide.countries[index].flags!.png!))),
+        ),title:Text(provide.countries[index].name!.common!,
+              
+              style: themedata.textTheme.bodyText1
+            ),
+            subtitle:Text(provide.countries[index].capital![0],
+           
+              style: themedata.textTheme.bodyText2
+            ),  trailing: IconButton(onPressed: (){
+             // provide.remove(provide.countries[index]);
+            },
+              icon: Icon(Icons.delete),),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox(height: 20.h);
+        },
+      ),
+    );
+   // return Text('Ayo');
   }
 }
                   

@@ -13,7 +13,7 @@ class CountrySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<CountryProvider>(context);
+    final provider = Provider.of<FavouriteProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -24,7 +24,7 @@ class CountrySection extends StatelessWidget {
         SizedBox(height: 1.0.h,),
           Row(
             children: [
-              Expanded(flex: 0,
+              Expanded(
                     child: ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -42,11 +42,7 @@ class CountrySection extends StatelessWidget {
                       },
                     ),
                   ),
-                  IconButton(onPressed: (){
-                    countryProvider.toggeleFavourite(item);
-
-                  }, icon: countryProvider.isExist ?
-                  Icon(Icons.favorite) : Icon(Icons.favorite_border))
+                 
             ],
           ),
  

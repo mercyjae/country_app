@@ -1,6 +1,7 @@
 import 'package:country_app/constant/color.dart';
 import 'package:country_app/controller/country_provider.dart';
 import 'package:country_app/controller/theme_provider.dart';
+import 'package:country_app/view/screen/favourite_screen.dart';
 import 'package:country_app/view/widget/country_section.dart';
 import 'package:country_app/view/widget/country_tile.dart';
 import 'package:country_app/view/widget/filter_tile.dart';
@@ -39,9 +40,7 @@ class _CountryScreenState extends State<CountryScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Explore",
-                        style: Theme.of(context).textTheme.headline3),
-                    Consumer<ThemeProvider>(builder: (context, theme, child) {
+                     Consumer<ThemeProvider>(builder: (context, theme, child) {
                       return InkWell(
                           onTap: () {
                             theme.changeTheme();
@@ -55,6 +54,14 @@ class _CountryScreenState extends State<CountryScreen> {
                                   'assets/moon.svg',
                                 ));
                     }),
+                    Text("Explore",
+                        style: Theme.of(context).textTheme.headline3),
+
+                        IconButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> 
+                          FavouriteScreen(countryProvider: countryProvider)));
+                        }, icon: Icon(Icons.favorite,color: Colors.red,))
+                   
                   ],
                 ),
                 SizedBox(height: 24.h),
