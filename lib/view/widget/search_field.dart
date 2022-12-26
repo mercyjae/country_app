@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class SearchField extends StatefulWidget {
-  SearchField({Key? key}) : super(key: key);
+  const SearchField({Key? key}) : super(key: key);
 
   @override
   State<SearchField> createState() => _SearchFieldState();

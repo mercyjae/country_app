@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class FilterWidget extends StatefulWidget {
   final String title;
-   FilterWidget({super.key, required this.title});
+   const FilterWidget({super.key, required this.title});
 
   @override
   State<FilterWidget> createState() => _FilterWidgetState();

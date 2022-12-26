@@ -15,6 +15,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:provider/provider.dart';
 
+
 class CountryScreen extends StatefulWidget {
   const CountryScreen({Key? key}) : super(key: key);
 
@@ -42,17 +43,20 @@ class _CountryScreenState extends State<CountryScreen> {
                   children: [
                      Consumer<ThemeProvider>(builder: (context, theme, child) {
                       return InkWell(
-                          onTap: () {
-                            theme.changeTheme();
+                          onTap: () async{
+                           //  SharedPreferences mSharedPrefs = await SharedPreferences.getInstance();
+                           // theme.changeTheme();
+                            theme.isDark ? theme.isDark = false
+                      : theme.isDark = true;
                           },
-                          child: theme.isLightTheme
+                          child: theme.isDark
                               ? SvgPicture.asset(
+                                  'assets/moon.svg',
+                                ):SvgPicture.asset(
                                   'assets/sun.svg',
                                   color: Colors.black,
                                 )
-                              : SvgPicture.asset(
-                                  'assets/moon.svg',
-                                ));
+                             );
                     }),
                     Text("Explore",
                         style: Theme.of(context).textTheme.headline3),
@@ -60,12 +64,12 @@ class _CountryScreenState extends State<CountryScreen> {
                         IconButton(onPressed: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> 
                           FavouriteScreen(countryProvider: countryProvider)));
-                        }, icon: Icon(Icons.favorite,color: Colors.red,))
+                        }, icon: const Icon(Icons.favorite,color: Colors.red,))
                    
                   ],
                 ),
                 SizedBox(height: 24.h),
-                SearchField(),
+                const SearchField(),
                 SizedBox(height: 16.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

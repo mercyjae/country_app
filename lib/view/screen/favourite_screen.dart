@@ -1,10 +1,6 @@
 import 'package:country_app/controller/country_provider.dart';
 import 'package:country_app/controller/favourites_provider.dart';
-import 'package:country_app/model/country_model.dart';
-import 'package:country_app/view/widget/country_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +13,8 @@ class FavouriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData themedata = Theme.of(context);
     final provide =  Provider.of<FavouriteProvider>(context);
-    return  Scaffold(appBar: AppBar(title: Text("Favourite Screen",),backgroundColor: Colors.red,),
+    return  Scaffold(appBar: AppBar(
+      title: const Text("Favourite Screen",),backgroundColor: Colors.red,),
       body: ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -38,13 +35,13 @@ class FavouriteScreen extends StatelessWidget {
            
               style: themedata.textTheme.bodyText2
             ),  trailing: IconButton(onPressed: (){
-             // provide.remove(provide.countries[index]);
+              provide.delete(provide.countries[index]);
             },
-              icon: Icon(Icons.delete),),
+              icon: const Icon(Icons.delete,color: Colors.red,),),
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(height: 20.h);
+          return SizedBox(height: 10.h);
         },
       ),
     );

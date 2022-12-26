@@ -12,9 +12,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  // ThemeProvider themeProvider = ThemeProvider();
+  // void changeTheme()async{
+  //   themeProvider.changeTheme() 
+  //   = await themeProvider.darkPreference.getDarkTheme();
+  // }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -34,8 +50,8 @@ class MyApp extends StatelessWidget {
                     debugShowCheckedModeBanner: false,
                     theme: MyTheme.lightTheme,
                     darkTheme: MyTheme.darkTheme,
-                    themeMode: theme.isLightTheme ? ThemeMode.light: ThemeMode.dark,
-                     home: CountryScreen());
+                    themeMode: theme.isDark ? ThemeMode.dark: ThemeMode.light,
+                     home: const CountryScreen());
               }
             ),
           );

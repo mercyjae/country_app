@@ -1,9 +1,8 @@
 import 'package:country_app/controller/country_provider.dart';
-import 'package:country_app/controller/favourites_provider.dart';
 import 'package:country_app/view/widget/country_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+
 
 class CountrySection extends StatelessWidget {
   final CountryProvider countryProvider;
@@ -13,8 +12,7 @@ class CountrySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FavouriteProvider>(context);
-    return Column(
+        return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
